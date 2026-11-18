@@ -1,0 +1,7 @@
+from sklearn.datasets import load_iris
+from sklearn.tree import DecisionTreeClassifier, export_text
+
+iris = load_iris()
+clf = DecisionTreeClassifier(random_state=0)
+clf.fit(iris.data, iris.target)
+print(export_text(clf, feature_names=iris.feature_names))

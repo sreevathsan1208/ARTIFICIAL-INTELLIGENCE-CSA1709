@@ -1,0 +1,6 @@
+sum_to(1, 1).
+sum_to(N, Sum) :-
+    N > 1,
+    N1 is N - 1,
+    sum_to(N1, SubSum),
+    Sum is N + SubSum.

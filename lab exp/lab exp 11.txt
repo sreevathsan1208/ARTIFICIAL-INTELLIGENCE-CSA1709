@@ -1,0 +1,23 @@
+def constraints(node, color, assignment, graph):
+    for neighbor in graph.get(node, []):
+        if neighbor in assignment and assignment[neighbor] == color:
+            return False
+    return True
+
+def backtrack(assignment, graph, colors):
+    if len(assignment) == len(graph):
+        return assignment
+    unassigned = [n for n in graph if n not in assignment][0]
+    for color in colors:
+        if constraints(unassigned, color, assignment, graph):
+            assignment[unassigned] = color
+            result = backtrack(assignment, graph, colors)
+            if result:
+                return result
+            del assignment[unassigned]
+    return None
+
+graph = {'WA': ['NT', 'SA'], 'NT': ['WA', 'SA', 'Q'], 'SA': ['WA', 'NT', 'Q', 'NSW', 'V'], 'Q': ['NT', 'SA', 'NSW'], 'NSW': ['Q', 'SA', 'V'], 'V': ['SA', 'NSW']}
+colors = ['Red', 'Green', 'Blue']
+print(backtrack({}, graph, colors))
+

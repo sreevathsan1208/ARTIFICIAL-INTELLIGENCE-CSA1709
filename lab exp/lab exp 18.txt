@@ -1,0 +1,3 @@
+dob(john, '12-05-2000').
+dob(alice, '22-09-2002').
+query_dob(Name, Date) :- dob(Name, Date).

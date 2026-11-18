@@ -1,0 +1,2 @@
+teaches(dr_smith, ai, 'CSA17').
+student_of(john, dr_smith, 'CSA17').
